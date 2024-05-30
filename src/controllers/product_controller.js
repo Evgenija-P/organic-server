@@ -20,3 +20,13 @@ exports.getProductBySlug = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.createProduct = async (req, res) => {
+  try {
+    const product = new ProductModel(req.body);
+    const result = await product.save();
+    res.status(201).json(result);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};

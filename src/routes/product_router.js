@@ -1,12 +1,14 @@
 const { Router } = require("express");
+const {
+  getAllProducts,
+  getProductBySlug,
+  createProduct,
+} = require("../controllers/product_controller");
 
 const router = Router();
 
-router.get("/", (reg, res, next) => {
-  res.send({ ok: "product page" });
-});
-router.get("/:slug", (reg, res, next) => {
-  res.send({ ok: "main page" });
-});
+router.post("/", createProduct);
+router.get("/", getAllProducts);
+router.get("/:slug", getProductBySlug);
 
 module.exports = router;

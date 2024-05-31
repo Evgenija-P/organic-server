@@ -16,13 +16,12 @@ app.use("/order", order_router);
 app.use("/product", product_router);
 app.use("/team", team_router);
 
+// Налаштовуємо середовище для статичних файлів (зображень)
+app.use("/images", express.static(__dirname + "/images"));
+
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
-
-// const server = app.listen(3010, () => {
-//   console.log("server started");
-// });
 
 console.clear();
 module.exports = app;

@@ -1,12 +1,10 @@
 const { Router } = require("express");
+const { createNews, getNewsBySlug, getAllNews } = require("../controllers/news_controller");
 
 const router = Router();
 
-router.get("/", (reg, res, next) => {
-  res.send({ ok: "news page" });
-});
-router.get("/:slug", (reg, res, next) => {
-  res.send({ ok: "main page" });
-});
+router.get("/", getAllNews);
+router.post("/", createNews);
+router.get("/:slug", getNewsBySlug);
 
 module.exports = router;
